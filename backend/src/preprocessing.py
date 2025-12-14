@@ -13,3 +13,14 @@ def load_data(file):
     except Exception as e:
         print(f"Error loading data: {e}")
         return None
+
+
+def clean_text(text) : 
+    if not isinstance(text , str):
+        return ""
+    text = text.lower()
+    text = re.sub(r'http\S+|www\S+|https\S+', '', text, flags=re.MULTILINE)
+    text = re.sub(r'\@w+|\#','', text)
+    text = re.sub(r'[^a-zA-Z\s]', '', text)
+    text = re.sub(r'\s+', ' ', text).strip()
+    return text
