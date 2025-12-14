@@ -24,3 +24,15 @@ def clean_text(text) :
     text = re.sub(r'[^a-zA-Z\s]', '', text)
     text = re.sub(r'\s+', ' ', text).strip()
     return text
+
+
+def preprocess_text(text):
+    if not isinstance(text , str):
+        return ""
+    
+    lemmatizer = WordNetLemmatizer()
+    stop_words = set(stopwords.words('english'))
+    tokens = text.split()
+    cleaned_tokens = [lemmatizer.lemmatize(word) for word in tokens if word not in stop_words]
+    return ' '.join(cleaned_tokens)
+    
