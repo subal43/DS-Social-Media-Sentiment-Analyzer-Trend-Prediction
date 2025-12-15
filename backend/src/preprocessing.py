@@ -38,5 +38,9 @@ def preprocess_text(text):
     cleaned_tokens = [lemmatizer.lemmatize(word) for word in token if word not in stop_words]
     return ' '.join(cleaned_tokens)
     
-
+def propare_data(df):
+    df = df.dropna(subset = ['Text'])
+    df['Cleaned_text'] = df['Text'].apply(clean_text)
+    df['Processed_text'] = df['Cleaned_text'].apply(preprocess_text)
+    return df
     
