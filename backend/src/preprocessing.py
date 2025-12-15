@@ -4,6 +4,8 @@ import re
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
+import spacy
+nltk.download('punkt_tab')
 
 
 def load_data(file):
@@ -32,7 +34,9 @@ def preprocess_text(text):
     
     lemmatizer = WordNetLemmatizer()
     stop_words = set(stopwords.words('english'))
-    tokens = text.split()
-    cleaned_tokens = [lemmatizer.lemmatize(word) for word in tokens if word not in stop_words]
+    token = nltk.word_tokenize(text)
+    cleaned_tokens = [lemmatizer.lemmatize(word) for word in token if word not in stop_words]
     return ' '.join(cleaned_tokens)
+    
+
     
