@@ -4,7 +4,7 @@ import re
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
-import spacy
+import datetime
 nltk.download('punkt_tab')
 
 
@@ -38,9 +38,17 @@ def preprocess_text(text):
     cleaned_tokens = [lemmatizer.lemmatize(word) for word in token if word not in stop_words]
     return ' '.join(cleaned_tokens)
     
-def propare_data(df):
+def prepare_data(df):
     df = df.dropna(subset = ['Text'])
     df['Cleaned_text'] = df['Text'].apply(clean_text)
     df['Processed_text'] = df['Cleaned_text'].apply(preprocess_text)
     return df
-    
+
+def add_dates(df):
+    start_date = datetime.date.today() - datetime.datetime.timedelta(days=365)
+    end_date = datetime.date.today()
+    days_range = (end_date - start_date).days
+    random_days = np.random.randint(0, days_range, size=len(df))
+    df['Date'] = [start_date + datetime.timedelta(days=int(day)) for day in random_days]
+    df['Date'] = pd.to_datetime(df['Date'])
+    return df
