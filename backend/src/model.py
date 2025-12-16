@@ -36,3 +36,12 @@ def train_model(df):
 def save_model(model):
     with open(MODEL_PATH, 'wb') as f:
         pickle.dump(model, f)
+
+def load_model():
+    if os.path.exists(MODEL_PATH):
+        with open(MODEL_PATH, 'rb') as f:
+            return pickle.load(f)
+    else:
+        return None
+   
+   
