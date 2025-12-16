@@ -31,3 +31,8 @@ def train_model(df):
     report = classification_report(y_test, y_pred)
 
     return model, accuracy, report
+
+
+def save_model(model):
+    with open(MODEL_PATH, 'wb') as f:
+        pickle.dump(model, f)
