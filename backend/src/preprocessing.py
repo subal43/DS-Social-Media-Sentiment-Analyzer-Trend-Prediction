@@ -40,12 +40,12 @@ def preprocess_text(text):
     
 def prepare_data(df):
     df = df.dropna(subset = ['Text'])
-    df['Cleaned_text'] = df['Text'].apply(clean_text)
-    df['Processed_text'] = df['Cleaned_text'].apply(preprocess_text)
+    df.loc[:,'Cleaned_text'] = df['Text'].apply(clean_text)
+    df.loc[:,'Processed_text'] = df['Cleaned_text'].apply(preprocess_text)
     return df
 
 def add_dates(df):
-    start_date = datetime.date.today() - datetime.datetime.timedelta(days=365)
+    start_date = datetime.date.today() - datetime.timedelta(days=365)
     end_date = datetime.date.today()
     days_range = (end_date - start_date).days
     random_days = np.random.randint(0, days_range, size=len(df))
