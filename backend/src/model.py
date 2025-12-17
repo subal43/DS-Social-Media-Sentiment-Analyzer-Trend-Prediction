@@ -44,4 +44,5 @@ def load_model():
     else:
         return None
    
-   
+def predict_sentiment(model, texts):
+    return model.predict(texts)[0]
