@@ -42,3 +42,6 @@ def ensure_model(model, df):
 
 st.sidebar.title("Navigation")
 page = st.sidebar.radio("Go to", ["Home", "Sentiment Analyzer", "Dashboard", "Trend Analysis"])
+
+with st.spinner('Loading data...'):
+    data = get_data()
