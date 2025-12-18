@@ -45,3 +45,7 @@ page = st.sidebar.radio("Go to", ["Home", "Sentiment Analyzer", "Dashboard", "Tr
 
 with st.spinner('Loading data...'):
     data = get_data()
+
+if data.empty:
+    st.error("No data available. Please ensure the data file exists.")
+    st.stop()
