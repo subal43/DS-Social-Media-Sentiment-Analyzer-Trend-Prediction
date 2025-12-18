@@ -26,12 +26,17 @@ def get_data():
     return df
 
 @st.cache_resource
-def get_model(df=None):
-    model = load_model('models/sentiment_model.pkl')
-    if model is None and df is not None :
-        sample_size = min(len(df),5000)
+def get_model():
+    return load_model('models/sentiment_model.pkl')
+
+   
+def ensure_model(model, df):
+    if model is None and df is not None:
+        sample_size = min(len(df), 5000)
         model = train_model(df.sample(sample_size, random_state=42))
         save_model(model, 'models/sentiment_model.pkl')
-        return model
-    else:
-        return model
+        st.cache_resource.clear()
+        model = get_model()
+
+    return model
+
