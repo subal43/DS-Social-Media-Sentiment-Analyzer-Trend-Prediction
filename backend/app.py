@@ -49,3 +49,8 @@ with st.spinner('Loading data...'):
 if data.empty:
     st.error("No data available. Please ensure the data file exists.")
     st.stop()
+
+model = get_model()
+model = ensure_model(model, data)
+
+
