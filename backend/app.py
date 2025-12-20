@@ -71,9 +71,17 @@ elif page == "Sentiment Analyzer":
     st.header("Sentiment Analyzer")
     st.markdown("Enter text below to analyze its sentiment.")
     user_input = st.text_area("Enter your text here:", height=200)
-    if user_input:
-        cleaned = clean_text(user_input)
-        processed = preprocess_text(cleaned)
-        prediction = predict_sentiment(model,processed)
-        
-     
+    if st.button("Analyze"):
+        if user_input:
+            cleaned = clean_text(user_input)
+            processed = preprocess_text(cleaned)
+            prediction = predict_sentiment(model,processed)
+            st.subheader(f"Predicted Sentiment:{prediction}")
+            if prediction == 'Positive':
+                st.success("😊 This is a Positive sentiment!")
+            elif prediction == 'Negative':
+                st.error("☹️ This is a Negative sentiment!")
+            else:
+                st.info("😐 This is a Neutral sentiment!")
+        else:
+            st.warning("Please enter some text to analyze its sentiment.")
