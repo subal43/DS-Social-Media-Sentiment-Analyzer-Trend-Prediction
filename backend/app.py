@@ -27,14 +27,14 @@ def get_data():
 
 @st.cache_resource
 def get_model():
-    return load_model('models/sentiment_model.pkl')
+    return load_model()
 
    
 def ensure_model(model, df):
     if model is None and df is not None:
         sample_size = min(len(df), 5000)
         model = train_model(df.sample(sample_size, random_state=42))
-        save_model(model, 'models/sentiment_model.pkl')
+        save_model(model)
         st.cache_resource.clear()
         model = get_model()
 
@@ -53,4 +53,16 @@ if data.empty:
 model = get_model()
 model = ensure_model(model, data)
 
+if page == "Home":
+    st.title("Welcome to the Social Sentiment Analyzer")
 
+    st.markdown("""
+    Welcome to the **Social Media Sentiment Analyzer & Trend Prediction** Dashboard.
+    
+    This tool allows you to:
+    - **Analyze Sentiment:** Predict if a text is Positive, Negative, or Neutral.
+    - **Visualize Data:** Explore the dataset with interactive charts.
+    - **Track Trends:** See how sentiment changes over time.
+    Navigate through the sidebar to access different features.
+    """)
+    st.image("https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80", use_container_width=True)

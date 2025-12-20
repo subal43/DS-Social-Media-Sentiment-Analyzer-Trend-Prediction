@@ -3,7 +3,12 @@ import pickle
 import os
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.model_selection import LogisticRegression
+from sklearn.linear_model import LogisticRegression
+from sklearn.multiclass import OneVsRestClassifier
+model = OneVsRestClassifier(
+    LogisticRegression(max_iter=1000)
+)
+
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import accuracy_score , classification_report
 
@@ -20,7 +25,7 @@ def train_model(df):
 
     model = Pipeline([
         ('tfidf', TfidfVectorizer()),
-        ('clf', LogisticRegression(max_iter=1000 , multi_class = 'ovr'))
+        ('clf', OneVsRestClassifier(LogisticRegression(max_iter=1000)))
     ])
 
 

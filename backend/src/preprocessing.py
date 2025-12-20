@@ -39,9 +39,9 @@ def preprocess_text(text):
     return ' '.join(cleaned_tokens)
     
 def prepare_data(df):
-    df = df.dropna(subset = ['Text'])
-    df.loc[:,'Cleaned_text'] = df['Text'].apply(clean_text)
-    df.loc[:,'Processed_text'] = df['Cleaned_text'].apply(preprocess_text)
+    df = df.dropna(subset = ['Text']).copy()
+    df['Cleaned_text'] = df['Text'].apply(clean_text)
+    df['Processed_text'] = df['Cleaned_text'].apply(preprocess_text)
     return df
 
 def add_dates(df):
