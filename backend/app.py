@@ -93,5 +93,10 @@ elif page == "Dashboard":
     st.subheader("Sentiment Distribution")
     sentiment_counts = data['Sentiment'].value_counts()
     st.bar_chart(sentiment_counts)
+    st.subheader("Sentiment Over Time")
+    sentiment_over_time = data.groupby(['Date', 'Sentiment']).size().unstack(fill_value=0)
+    st.line_chart(sentiment_over_time)
 
+    st.subheader("Raw Data")
+    st.dataframe(data)
     
