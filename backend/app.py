@@ -32,8 +32,8 @@ def get_model():
    
 def ensure_model(model, df):
     if model is None and df is not None:
-        sample_size = min(len(df), 5000)
-        model = train_model(df.sample(sample_size, random_state=42))
+        # sample_size = min(len(df), 5000)
+        model = train_model(df)
         save_model(model)
         st.cache_resource.clear()
         model = get_model()
@@ -76,7 +76,7 @@ elif page == "Sentiment Analyzer":
             cleaned = clean_text(user_input)
             processed = preprocess_text(cleaned)
             prediction = predict_sentiment(model,processed)
-            st.subheader(f"Predicted Sentiment:{prediction}")
+            st.subheader(f"Predicted Sentiment : {prediction}")
             if prediction == 'Positive':
                 st.success("😊 This is a Positive sentiment!")
             elif prediction == 'Negative':

@@ -32,11 +32,10 @@ def train_model(df):
     model.fit(x_train, y_train)
 
     y_pred = model.predict(x_test)
-    accuracy = accuracy_score(y_test, y_pred)
-    report = classification_report(y_test, y_pred)
+    # accuracy = accuracy_score(y_test, y_pred)
+    # report = classification_report(y_test, y_pred)
 
-    return model, accuracy, report
-
+    return model 
 
 def save_model(model):
     with open(MODEL_PATH, 'wb') as f:
@@ -50,4 +49,7 @@ def load_model():
         return None
    
 def predict_sentiment(model, texts):
-    return model.predict(texts)[0]
+    return model.predict([texts])[0]
+
+
+
