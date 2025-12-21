@@ -85,3 +85,13 @@ elif page == "Sentiment Analyzer":
                 st.info("😐 This is a Neutral sentiment!")
         else:
             st.warning("Please enter some text to analyze its sentiment.")
+
+elif page == "Dashboard":
+    st.header("Data Dashboard")
+    st.markdown("Explore the sentiment data with interactive visualizations.")
+    
+    st.subheader("Sentiment Distribution")
+    sentiment_counts = data['Sentiment'].value_counts()
+    st.bar_chart(sentiment_counts)
+
+    
