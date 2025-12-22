@@ -39,5 +39,17 @@ def sentiment_trend_analysis(data):
             title=f"{sentiment} Sentiment Trend",
             markers=True
         )
+        if use_moving_avg:
+            sentiment_df['Moving_Avg'] = sentiment_df['Count'].rolling(window=3).mean()
 
-     
+            fig.add_scatter(
+                x=sentiment_df['Period'],
+                y=sentiment_df['Moving_Avg'],
+                mode='lines',
+                name='Moving Average'
+            )
+
+        st.plotly_chart(fig, use_container_width=True)
+
+    
+    
