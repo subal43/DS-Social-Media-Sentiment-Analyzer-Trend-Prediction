@@ -7,6 +7,7 @@ import os
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 from src.preprocessing import load_data, prepare_data, add_dates,clean_text, preprocess_text
 from src.model import train_model, save_model, load_model, predict_sentiment
+from src.trend import sentiment_trend_analysis
 
 st.set_page_config(
     page_title="Social Sentiment Analyzer",
@@ -93,10 +94,15 @@ elif page == "Dashboard":
     st.subheader("Sentiment Distribution")
     sentiment_counts = data['Sentiment'].value_counts()
     st.bar_chart(sentiment_counts)
-    st.subheader("Sentiment Over Time")
-    sentiment_over_time = data.groupby(['Date', 'Sentiment']).size().unstack(fill_value=0)
-    st.line_chart(sentiment_over_time)
-
     st.subheader("Raw Data")
     st.dataframe(data)
+
+elif page == "Trend Analysis":
+    st.header("Trend Analysis")
+    st.markdown("Analyze sentiment trends over time.")
+    
+    sentiment_trend_analysis(data)
+    
+   
+
     
