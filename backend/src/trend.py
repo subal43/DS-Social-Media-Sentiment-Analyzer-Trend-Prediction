@@ -11,5 +11,11 @@ def sentiment_trend_analysis(data):
     """
 
     st.subheader("Sentiment Trend Analysis")
+    # 1. User Controls
+    time_freq = st.selectbox(
+        "Select Time Aggregation",
+        ["Daily", "Weekly", "Monthly"]
+    )
+    use_moving_avg = st.checkbox("Show Moving Average")
 
-   
+    
