@@ -17,12 +17,16 @@ def sentiment_trend_analysis(data):
         ["Daily", "Weekly", "Monthly"]
     )
     use_moving_avg = st.checkbox("Show Moving Average")
-    
+
     if time_freq == "Weekly":
         data['Period'] = data['Date'].dt.to_period("W").dt.start_time
     elif time_freq == "Monthly":
         data['Period'] = data['Date'].dt.to_period("M").dt.start_time
     else:
         data['Period'] = data['Date']
+
+    trend_data = (
+        data.groupby(['Period', 'Sentiment']).size().reset_index(name='Count')
+    )
 
     
