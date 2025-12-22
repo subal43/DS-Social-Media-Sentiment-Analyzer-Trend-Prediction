@@ -28,13 +28,8 @@ def train_model(df):
         ('clf', OneVsRestClassifier(LogisticRegression(max_iter=1000)))
     ])
 
-
     model.fit(x_train, y_train)
-
-    y_pred = model.predict(x_test)
-    # accuracy = accuracy_score(y_test, y_pred)
-    # report = classification_report(y_test, y_pred)
-
+    model.predict(x_test)
     return model 
 
 def save_model(model):

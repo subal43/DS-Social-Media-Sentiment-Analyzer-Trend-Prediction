@@ -65,7 +65,10 @@ if page == "Home":
     - **Visualize Data:** Explore the dataset with interactive charts.
     - **Track Trends:** See how sentiment changes over time.
     Navigate through the sidebar to access different features.
-    """)
+   **Project Data:**
+    - Total Records: **{:,}**
+    - Topics Covered: **{}**
+    """.format(len(data), data['Topic'].nunique() if 'Topic' in data.columns else 'N/A'))
     st.image("https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80", use_container_width=True)
 
 elif page == "Sentiment Analyzer":
