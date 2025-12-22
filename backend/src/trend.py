@@ -29,4 +29,15 @@ def sentiment_trend_analysis(data):
         data.groupby(['Period', 'Sentiment']).size().reset_index(name='Count')
     )
 
-    
+    for sentiment in trend_data['Sentiment'].unique():
+        sentiment_df = trend_data[trend_data['Sentiment'] == sentiment].copy()
+
+        fig = px.line(
+            sentiment_df,
+            x='Period',
+            y='Count',
+            title=f"{sentiment} Sentiment Trend",
+            markers=True
+        )
+
+     
