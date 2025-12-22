@@ -11,11 +11,18 @@ def sentiment_trend_analysis(data):
     """
 
     st.subheader("Sentiment Trend Analysis")
-    # 1. User Controls
+
     time_freq = st.selectbox(
         "Select Time Aggregation",
         ["Daily", "Weekly", "Monthly"]
     )
     use_moving_avg = st.checkbox("Show Moving Average")
+    
+    if time_freq == "Weekly":
+        data['Period'] = data['Date'].dt.to_period("W").dt.start_time
+    elif time_freq == "Monthly":
+        data['Period'] = data['Date'].dt.to_period("M").dt.start_time
+    else:
+        data['Period'] = data['Date']
 
     
