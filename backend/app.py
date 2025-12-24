@@ -32,7 +32,6 @@ def get_model():
    
 def ensure_model(model, df):
     if model is None and df is not None:
-        # sample_size = min(len(df), 5000)
         model = train_model(df)
         save_model(model)
         st.cache_resource.clear()
