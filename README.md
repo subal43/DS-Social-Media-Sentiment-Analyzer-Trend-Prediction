@@ -17,3 +17,19 @@ The **Social Media Sentiment Analyzer & Trend Prediction** is a data science pro
 - **Data Manipulation**: Pandas, NumPy
 - **NLP**: NLTK (Stopwords, WordNet Lemmatizer)
 - **Visualization**: Plotly Express
+
+
+## 📂 Project Structure
+```
+d:\sentiment-analyzer\
+├── backend\
+│   ├── app.py              # Main Streamlit application entry point
+│   └── src\
+│       ├── model.py        # ML model training, saving, and prediction logic
+│       ├── preprocessing.py# Text cleaning and data preparation functions
+│       └── trend.py        # Trend analysis and visualization logic
+├── data\                   # Directory for dataset (twitter_training.csv)
+├── models\                 # Directory where the trained model (sentiment_model.pkl) is saved
+├── ran_app.bat             # Batch script to easily run the application on Windows
+└── README.md               # Project documentation
+```
