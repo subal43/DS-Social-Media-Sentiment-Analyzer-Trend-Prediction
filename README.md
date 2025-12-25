@@ -8,3 +8,12 @@ The **Social Media Sentiment Analyzer & Trend Prediction** is a data science pro
 - **Interactive Dashboard**: Visualize sentiment distribution and explored raw data.
 - **Trend Analysis**: dynamic line charts to track sentiment changes over daily, weekly, or monthly periods.
 - **Data Preprocessing**: Robust text cleaning (removing URLs, special characters) and lemmatization.
+
+
+## 🛠️ Tech Stack
+- **Frontend/UI**: [Streamlit](https://streamlit.io/)
+- **Programming Language**: Pyton 3.x
+- **Machine Learning**: Scikit-Learn (Logistic Regression, TF-IDF Vectorizer)
+- **Data Manipulation**: Pandas, NumPy
+- **NLP**: NLTK (Stopwords, WordNet Lemmatizer)
+- **Visualization**: Plotly Express
