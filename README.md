@@ -33,3 +33,33 @@ d:\sentiment-analyzer\
 ├── ran_app.bat             # Batch script to easily run the application on Windows
 └── README.md               # Project documentation
 ```
+## ⚙️ Installation & Setup
+
+1.  **Clone the Repository**
+    ```bash
+    git clone <repository_url>
+    cd sentiment-analyzer
+    ```
+
+2.  **Create a Virtual Environment (Optional but Recommended)**
+    ```bash
+    python -m venv venv
+    # Windows
+    venv\Scripts\activate
+    # macOS/Linux
+    source venv/bin/activate
+    ```
+
+3.  **Install Dependencies**
+    Since there is no `requirements.txt` provided, install the necessary packages manually:
+    ```bash
+    pip install streamlit pandas numpy scikit-learn nltk plotly
+    ```
+
+4.  **Download NLTK Data**
+    The app requires NLTK data. You can download it via python or run the app once, as the code attempts to download `punkt_tab` automatically. You may also need:
+    ```python
+    import nltk
+    nltk.download('stopwords')
+    nltk.download('wordnet')
+    ```
