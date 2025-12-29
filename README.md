@@ -67,3 +67,9 @@ d:\sentiment-analyzer\
 ## 🏃 Usage
 ### Running with Batch Script (Windows)
 Simply double-click the `ran_app.bat` file in the root directory.
+
+### Running Manually
+Execute the following command in the terminal from the project root:
+```bash
+streamlit run backend/app.py
+```
