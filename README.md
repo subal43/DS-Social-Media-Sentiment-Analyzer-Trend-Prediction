@@ -63,3 +63,7 @@ d:\sentiment-analyzer\
     nltk.download('stopwords')
     nltk.download('wordnet')
     ```
+
+## 🏃 Usage
+### Running with Batch Script (Windows)
+Simply double-click the `ran_app.bat` file in the root directory.
