@@ -80,3 +80,5 @@ streamlit run backend/app.py
 - Text is vectorized using **TF-IDF**.
 - The model is trained on the first run if not present and saved to `models/sentiment_model.pkl`.
 
+## 🤝 Contributing
+Contributions are welcome! Please feel free to submit a Pull Request.
