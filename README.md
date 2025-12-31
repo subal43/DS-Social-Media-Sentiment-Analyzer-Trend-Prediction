@@ -73,3 +73,10 @@ Execute the following command in the terminal from the project root:
 ```bash
 streamlit run backend/app.py
 ```
+
+
+## 🧠 Model Details
+- The project uses a **Logistic Regression** model wrapped in a **OneVsRestClassifier**.
+- Text is vectorized using **TF-IDF**.
+- The model is trained on the first run if not present and saved to `models/sentiment_model.pkl`.
+
